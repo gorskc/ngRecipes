@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ng-recipes</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://use.fontawesome.com/830541b1e3.js"></script>
+	</head>
+	<body ng-app="ngRecipes" ng-class="bodyClass">
+
+		<div ui-view="main-nav"></div>
+		<div ui-view="user-nav"></div>
+		<div ui-view="main"></div>
+		<div ui-view="login"></div>
+		<div ui-view="list"></div>
+		<div ui-view="recipes"></div>
+		<div ui-view="categories"></div>
+		<div ui-view="register"></div>
+		<div ui-view="new"></div>
+		<div ui-view="show-new"></div>
+		<div ui-view="account"></div>
+		<div ui-view="logout"></div>
+		<div ui-view="sitemap"></div>
+		<div ui-view="footer"></div>
+
+
+	</body>
+
+	<style>
+		body {
+			background-color: #F5F5F5;
+		}
+
+		a {
+			color: #DCDCDC;
+		}
+		a:hover {
+			color: #DCDCDC;
+		}
+		a.thumbnail > img {
+			height: 125px;
+			width: 200px;
+		}
+		.nav {
+			margin: 0 auto;
+			border: none;
+		}
+		.title > a,
+		.title > a:active,
+		.title > a:hover,
+		.title > a:focus {
+			text-decoration: none;
+			color: #708090;
+		}
+
+		button {
+			background-color: #6A5ACD;
+			color: #DCDCDC;
+		}
+
+		button:hover {
+			background-color: #483D8B;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.4.0/ui-bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.4.0/ui-bootstrap-tpls.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+	<script src="app.js"></script>
+	<script src="factories/recipesFactory.js"></script>
+	<script src="controllers/RecipesCtrl.js"></script>
+	<script src="factories/viewRecipesFactory.js"></script>
+	<script src="controllers/ViewRecipeCtrl.js"></script>
+	<script src="services/sharedListService.js"></script>
+	<script src="controllers/ListCtrl.js"></script>
+	<script src="controllers/SidebarCtrl.js"></script>
+	<script src="controllers/NewRecipeCtrl.js"></script>
+	<script src="controllers/CategoriesCtrl.js"></script>
+	<script src="controllers/MainCtrl.js"></script>
+	<script src="controllers/RegistrationCtrl.js"></script>
+	<script src="services/sharedRegService.js"></script>
+	<script src="controllers/AccountCtrl.js"></script>
+	<script src="services/sharedRecipeService.js"></script>
+	<script src="controllers/ShowNewCtrl.js"></script>
+</html>

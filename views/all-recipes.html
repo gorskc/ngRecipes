@@ -1,0 +1,80 @@
+<div ui-view="detail">
+  <div class="recipes-container">
+    <div class="row recipes-search">
+      <div class="col-xs-4">
+        <div class="input-group search">
+          <input type="text" class="form-control recipes-search-bar" placeholder="Search" ng-model="query">
+        </div>
+      </div>
+    </div>
+    <div class="row all-recipes">
+      <h3 class="row-title">All Recipes</h3>
+      <div class="recipes col-xs-6 col-md-3" ng-repeat="recipe in recipes | filter: query ">
+        <a class="thumbnail all-thumbnails" ui-sref="recipes.detail({ id: recipe.id })">
+          <img ng-src="{{ recipe.image_url }}">
+          <div class="caption">
+            <h4>{{ recipe.name }}</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="categories-container">
+    <div class="row cat-recipes">
+      <h3 class="row-title">Categories</h3>
+      <div class="recipes col-xs-6 col-md-3" ng-repeat="cat in allRecipes">
+        <a class="thumbnail all-thumbnails" ui-sref="categories({ category: cat.category })">
+          <img ng-src="{{ cat.recipes[0].image_url }}">
+          <div class="caption">
+            <h4>{{ cat.category }}</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div ui-view="footer"></div>
+</div>
+<div ui-view="sidebar"></div>
+
+<br><br><br>
+<style type="text/css">
+
+  div.recipes-search {
+    background-color: #FFFFFF;
+    position: relative;
+    padding: 10px 0 10px 0;
+    margin: 0;
+    border-bottom: 1px solid #D3D3D3;
+  }
+
+  input.recipes-search-bar {
+    border-radius: 0;
+    position: relative;
+    width: 100%;
+  }
+  .row-title {
+    position: relative;
+    left: 7%;
+  }
+
+  .recipes {
+    margin-left: 50px;
+  }
+
+  a.thumbnail {
+    border: none;
+  }
+
+  div.recipes-container, div.categories-container {
+    margin: 15px 15px -25px 15px;
+    background-color: #FFFFFF;
+    padding: 0;
+    box-shadow: 2px 2px 4px #D3D3D3;
+    width: 85%;
+    position: relative;
+    bottom: 0;
+    left: 7%;
+  }
+
+
+</style>

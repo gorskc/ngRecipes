@@ -1,0 +1,46 @@
+<div class="list">
+  <form>
+    <table class="table list-table">
+      <thead>
+        <tr class="list-title-row">
+          <th class="list-title">Grocery List</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="list-item-row" ng-repeat="item in data">
+          <td><label><input type="checkbox"> {{ item }}</label></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+
+<style type="text/css">
+
+  table.list-table {
+    background-color: #FFFFFF;
+  }
+  div.list {
+    width: 50%;
+    margin-left: 250px;
+  }
+
+  .list-table {
+    border-radius: 5px;
+  }
+
+  .list-title-row {
+    background-color: #6A5ACD;
+  }
+
+  .list-title {
+    text-align: center;
+  }
+
+  .list-item-row {
+    margin-left: 100px;
+    text-align: left;
+  }
+
+
+</style>

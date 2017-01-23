@@ -1,0 +1,51 @@
+<div class="sidebar">
+  <h3>Recipes</h3>
+  <ul class="nav nav-pills nav-stacked sidebar-stack" ng-repeat="recipe in recipes">
+    <li><a class="sidebar-link"
+      ui-sref="recipes.detail({ id: recipe.id })"
+      ng-class="{ 'active' : getActive(recipe)}">{{ recipe.name }}</a></li>
+  </ul>
+</div>
+
+
+<style>
+
+  ul.nav > li > a.active {
+    background-color: #6A5ACD;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    color: #D5D5D5;
+    text-decoration: none;
+  }
+
+  div.sidebar {
+    position: fixed;
+    top: 120px;
+    width: 185px;
+    background-color: #A9A9A9;
+    color: #FFFFFF;
+  }
+
+  div.sidebar > h3 {
+    text-indent: 10%;
+    border-bottom: 1px solid #D5D5D5;
+  }
+
+  div.sidebar > ul > li:active,
+  div.sidebar > ul > li:hover,
+  div.sidebar > ul > li:focus,
+  div.sidebar > ul > li.active,
+  div.sidebar > ul > li > a:active,
+  div.sidebar > ul > li > a:hover,
+  div.sidebar > ul > li > a:focus {
+    background-color: #6A5ACD;
+    border-radius: 0;
+    color: #D5D5D5;
+    text-decoration: none;
+  }
+
+  .sidebar-link {
+    color: #FFFFFF;
+  }
+
+</style>
