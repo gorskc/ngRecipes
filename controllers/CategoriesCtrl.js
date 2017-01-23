@@ -2,7 +2,7 @@ angular
 	.module('ngRecipes')
 	.controller('CategoriesCtrl', CategoriesCtrl);
 
-CategoriesCtrl.$inject = ['$scope', '$location', recipesFactory];
+CategoriesCtrl.$inject = ['$scope', '$location', 'recipesFactory'];
 function CategoriesCtrl($scope, $location, recipesFactory) {
 
   $scope.path = $location.path();
