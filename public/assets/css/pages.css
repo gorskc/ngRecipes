@@ -1,0 +1,323 @@
+/*--- all ----*/
+body {
+  background-color: #F5F5F5;
+}
+
+a {
+  color: #DCDCDC;
+}
+a:hover {
+  color: #DCDCDC;
+}
+a.thumbnail > img {
+  height: 125px;
+  width: 200px;
+}
+.nav {
+  margin: 0 auto;
+  border: none;
+}
+.title > a,
+.title > a:active,
+.title > a:hover,
+.title > a:focus {
+  text-decoration: none;
+  color: #708090;
+}
+
+button {
+  background-color: #6A5ACD;
+  color: #DCDCDC;
+}
+
+button:hover {
+  background-color: #483D8B;
+}
+
+/*---- account display ----*/
+.account-title {
+  text-align: center;
+}
+.account-table {
+  background-color: #FFFFFF;
+  position: relative;
+  width: 55%;
+  left: 25%;
+  padding: 10px;
+  font-size: 16px;
+}
+.account-btn {
+  position: relative;
+  left: 40%;
+}
+
+/*---- all-recipes display ----*/
+div.recipes-search {
+  background-color: #FFFFFF;
+  position: relative;
+  padding: 10px 0 10px 0;
+  margin: 0;
+  border-bottom: 1px solid #D3D3D3;
+}
+input.recipes-search-bar {
+  border-radius: 0;
+  position: relative;
+  width: 100%;
+}
+.row-title {
+  position: relative;
+  left: 7%;
+}
+.recipes {
+  margin-left: 50px;
+}
+a.thumbnail {
+  border: none;
+}
+div.recipes-container, div.categories-container {
+  margin: 15px 15px 15px 15px;
+  background-color: #FFFFFF;
+  padding: 0;
+  box-shadow: 2px 2px 4px #D3D3D3;
+  width: 85%;
+  position: relative;
+  bottom: 0;
+  left: 7%;
+}
+
+/*---- categories display ----*/
+div.categories-list {
+  background-color: #FFFFFF;
+  box-shadow: 2px 2px 4px #D3D3D3;
+  width: 85%;
+  position: relative;
+  left: 7%;
+  margin: 15px;
+}
+
+div.recipes-search {
+  background-color: #FFFFFF;
+  position: relative;
+  padding: 10px 0 10px 0;
+  margin: 0;
+  border-bottom: 1px solid #D3D3D3;
+}
+
+input.recipes-search-bar {
+  border-radius: 0;
+  position: relative;
+  width: 100%;
+}
+
+.row-title {
+  position: relative;
+  left: 7%;
+}
+
+.recipes {
+  margin-left: 50px;
+}
+
+a.thumbnail {
+  border: none;
+}
+
+body {
+  background-color: #F5F5F5;
+}
+/*----- list display ----*/
+table.list-table {
+  background-color: #FFFFFF;
+}
+div.list {
+  width: 50%;
+  margin-left: 250px;
+}
+
+.list-table {
+  border-radius: 5px;
+}
+
+.list-title-row {
+  background-color: #6A5ACD;
+}
+
+.list-title {
+  text-align: center;
+}
+
+.list-item-row {
+  margin-left: 100px;
+  text-align: left;
+}
+
+/*---- login form ----*/
+.login-container {
+  width: 40%;
+  position: relative;
+  top: 25%;
+  left: 30%;
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  padding: 10px;
+}
+
+form.login-form {
+  position: relative;
+  left: 25%;
+  width: 50%;
+}
+
+.login-form > input {
+  height: 30px;
+  width: 215px;
+  margin: 3px;
+}
+
+/*---- logout display ----*/
+.logout {
+  text-align: center;
+}
+
+/*---- main body ----*/
+div.main {
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 0;
+  width: 100%;
+  height: 570px;
+  color: #111111;
+  text-align: left;
+  background-color: #F5F5F5;
+  background-image: url("../img/foodiesfeed.com__plums-ready-for-cake.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+div.main-content {
+  position: relative;
+  top: 75px;
+  left: 500px;
+  width: 10%;
+  padding: 5px;
+  background-color: #FFFFFF;
+}
+div.main > h1 {
+  margin: 0;
+}
+
+div.main > p {
+  font-weight: bold;
+}
+div.main > p > a {
+  color: #111111;
+}
+
+/*---- new display ----*/
+.new-container {
+  background-color: #FFFFFF;
+  width: 75%;
+  border: 1px solid #FFFFFF;
+  position: relative;
+  top: 0;
+  left: 175px;
+  margin-bottom: 100px;
+}
+.new-title {
+  position: relative;
+  left: 6%;
+}
+.form-new {
+  position: relative;
+  left: 5%;
+  width: 80%;
+  padding: 3%;
+}
+
+/*---- recipe display ----*/
+div.recipe-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 80%;
+  margin: 10px 0 0 200px;
+  box-shadow: 2px 2px 4px #D3D3D3;
+}
+table.ingredients > label {
+  text-align: left;
+}
+a.details-link {
+  color: #6A5ACD;
+}
+button#groceryLink:hover {
+  color: #DCDCDC;
+}
+
+.recipe-container > .row {
+  position: relative;
+  left: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+div.thumbnail {
+  border: none;
+}
+
+input[checkbox] {
+  width: 5px;
+  height: 5px;
+}
+
+/*---- registration form ----*/
+.reg-container {
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+div.reg-title {
+  height: 50px;
+}
+h3.reg-title  {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+form.reg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 15px;
+}
+
+/*---- show-new recipe display ----*/
+div.show-new-container {
+  position: relative;
+  background-color: #ffffff;
+  width: 80%;
+  margin: 10px 0 0 200px;
+  box-shadow: 2px 2px 4px #D3D3D3;
+}
+
+.recipe-container > .row {
+  position: relative;
+  left: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+div.thumbnail {
+  border: none;
+}
+
+.map-title {
+  text-align: center;
+  color: #6A5ACD;
+}
+#links {
+  display: table;
+  margin: 0 auto;
+}

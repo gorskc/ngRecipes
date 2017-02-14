@@ -1,0 +1,16 @@
+<div class="list">
+  <form>
+    <table class="table list-table">
+      <thead>
+        <tr class="list-title-row">
+          <th class="list-title">Grocery List</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="list-item-row" ng-repeat="item in data">
+          <td><label><input type="checkbox"> {{ item }}</label></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
