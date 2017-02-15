@@ -2,26 +2,29 @@ angular
   .module('recipebox')
   .controller('RegistrationCtrl', RegistrationCtrl);
 
-RegistrationCtrl.$inject = ['$scope', 'sharedRegService', '$state'];
+RegistrationCtrl.$inject = ['$scope', 'Auth', '$state'];
 
-function RegistrationCtrl($scope, sharedRegService, $state) {
-  $scope.newUser = function() {
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(function(response) {
-        console.log(email);
-        $state.go('login');
-      })
-      .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if(errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
+function RegistrationCtrl($scope, Auth, $state) {
+  $scope.createUser = function() {
+    $scope.message = null;
+    $scope.error = null;
+
+    authFactory.$createUserWithEmailAndPassword($scope.email, $scope.password)
+      .then(function(firebaseUser) {
+        $scope.message = "User created with uid: " + firebaseUser.uid;
+        $state.go('account');
+      }).catch(function(error) {
+        $scope.error = error;
       });
-    };
+  };
+
+  $scope.deleteUser = function() {
+    $scope.message = null;
+    $scope.error = null;
+    authFactory.$deleteUser().then(function() {
+      $scope.message = "User deleted";
+    }).catch(function(error) {
+      $scope.error = error;
+    });
+  };
 }

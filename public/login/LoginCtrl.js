@@ -2,20 +2,23 @@ angular
   .module('recipebox')
   .controller('LoginCtrl', LoginCtrl);
 
-LoginCtrl.$inject = ['$scope', '$state', 'authFactory'];
-function LoginCtrl($scope, $state, authFactory) {
+LoginCtrl.$inject = ['$scope', '$state', 'currentAuth', 'Auth'];
+function LoginCtrl($scope, $state, currentAuth, Auth) {
+
   $scope.signIn = function() {
+    //console.log(currentAuth);
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    if (email.length < 4) {
+    if ($scope.email.length < 4) {
       alert('Please enter a valid email address.');
       return;
     }
-    if (password.length < 4) {
+    if ($scope.password.length < 4) {
       alert('Please enter a password.');
       return;
     }
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function(response) {
+
+    Auth.$signInWithEmailAndPassword($scope.email, $scope.password).then(function(response) {
       console.log(response.displayName);
       $state.go('recipes');
     }).catch(function(error) {
@@ -44,8 +47,9 @@ function LoginCtrl($scope, $state, authFactory) {
     })
   };
   $scope.logOut = function() {
-    firebase.auth().signOut().then(function(){
+    Auth.$signOut().then(function(){
       console.log('Logging out');
+      $state.go('home');
     }).catch(function(error) {
       console.log("Error signing user out:", error);
     });

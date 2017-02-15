@@ -19,7 +19,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main': {
           templateUrl: 'main/main.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -34,11 +39,21 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'login': {
           templateUrl: 'login/login.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -57,7 +72,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -75,12 +95,21 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'recipes': {
           templateUrl: 'recipes/all-recipes.html',
           controller: 'RecipesCtrl',
-          controllerAs: 'recipes'
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -98,11 +127,21 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'categories': {
           templateUrl: 'categories/categories.html',
-          controller: 'CategoriesCtrl'
+          controller: 'CategoriesCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -130,7 +169,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -152,7 +196,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -174,7 +223,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -197,7 +251,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -212,11 +271,21 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'account': {
           templateUrl: 'account/account.html',
-          controller: 'AccountCtrl'
+          controller: 'AccountCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'user-nav': {
           templateUrl: 'nav/user-nav.html'
@@ -234,10 +303,21 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'logout': {
-          templateUrl: 'logout/logout.html'
+          templateUrl: 'logout/logout.html',
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -262,18 +342,9 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
 
 runFunction.$inject = ['$rootScope', '$state'];
 function runFunction($rootScope, $state) {
-  $rootScope.authentication = firebase.auth();
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      console.log(user);
-      $rootScope.displayName = user.displayName;
-      $rootScope.email = user.email;
-      var emailVerified = user.emailVerified;
-      document.getElementById('display-userName').textContent = $rootScope.email;
-      document.getElementById('display-userName').style.visibility = 'visible';
-    } else {
-      console.log("logged out");
-      $state.go('login');
+  $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+    if (error === "AUTH_REQUIRED") {
+      $state.go("home");
     }
   });
 }
