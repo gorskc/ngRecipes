@@ -3,6 +3,14 @@ angular
   .config(config)
   .run(runFunction);
 
+runFunction.$inject = ['$rootScope', '$state'];
+function runFunction($rootScope, $state) {
+  $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+    if (error === "AUTH_REQUIRED") {
+      $state.go("home");
+    }
+  });
+}
 config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
 function config($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -15,7 +23,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'MainCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'main': {
           templateUrl: 'main/main.html',
@@ -339,12 +352,3 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     });
   }
-
-runFunction.$inject = ['$rootScope', '$state'];
-function runFunction($rootScope, $state) {
-  $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
-    if (error === "AUTH_REQUIRED") {
-      $state.go("home");
-    }
-  });
-}
