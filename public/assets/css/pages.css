@@ -46,9 +46,32 @@ button:hover {
   padding: 10px;
   font-size: 16px;
 }
-.account-btn {
+
+.account-buttons {
+  display: inline-block;
+  margin: 10px;
+}
+.delete {
+  position: absolute;
+  left: 45%;
+  width: 150px;
+}
+
+.update {
+  position: absolute;
+  left: 30%;
+}
+
+#deleteConfirm {
+  position: absolute;
+  background-color: #FFFFFF;
+  top: 35px;
+  padding: 5px;
+  text-align: center;
+}
+#deleteConfirm > button {
   position: relative;
-  left: 35%;
+  left: 5px;
 }
 
 /*---- all-recipes display ----*/
@@ -174,6 +197,10 @@ form.login-form {
   margin: 3px;
 }
 
+/*---- Login modal form ----*/
+.password-reset-form {
+  margin-bottom: 75px;
+}
 /*---- logout display ----*/
 .logout {
   text-align: center;
@@ -199,18 +226,20 @@ div.main-content {
   position: relative;
   top: 75px;
   left: 500px;
-  width: 10%;
+  width: 25%;
   padding: 5px;
   background-color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
 }
 div.main > h1 {
   margin: 0;
 }
 
-div.main > p {
+div.main-content > p {
   font-weight: bold;
 }
-div.main > p > a {
+div.main-content > button > a {
   color: #111111;
 }
 

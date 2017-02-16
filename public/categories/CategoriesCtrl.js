@@ -2,8 +2,8 @@ angular
 	.module('recipebox')
 	.controller('CategoriesCtrl', CategoriesCtrl);
 
-CategoriesCtrl.$inject = ['$scope', '$location', 'recipesFactory'];
-function CategoriesCtrl($scope, $location, recipesFactory) {
+CategoriesCtrl.$inject = ['$scope', '$location', '$state', '$firebaseArray', '$firebaseObject'];
+function CategoriesCtrl($scope, $location, $state, $firebaseArray, $firebaseObject) {
 
   $scope.path = $location.path();
 	$scope.recipes;
@@ -17,6 +17,36 @@ function CategoriesCtrl($scope, $location, recipesFactory) {
     var page_id = path_arr[index];
     return value.category === page_id;
   };
+	var ref = firebase.database().ref('recipes/');
+	$scope.recipes = $firebaseArray(ref);
+	console.log($firebaseArray(ref));
+	//$scope.allRecipes = $scope.categories.reduce(function(acc, value) {
+	//	var obj = {"category":'', "recipes": ''};
+	//	obj.category = value;
+	//	$scope.recipes.$loaded()
+	//		.then(function(data) {
+	//			console.log(data === $scope.recipes);
+	//			obj.recipes = $scope.recipes.filter(function(item) {
+	//				if(item.type.indexOf(value) > -1) {
+	//					return item;
+	//				} else if (value === "All") {
+	//					return item;
+	//				};
+	//			});
+	//		})
+	//		.catch(function(error) {
+	//			console.log("Error: ", error);
+	//		});
+//
+	//	acc.push(obj);
+	//	return acc;
+	//}, []);
+	$scope.recipes.$loaded().then(function(data) {
+		$scope.allRecipes = $scope.categories.reduce($scope.recipereduce, []);
+    $scope.thisRecipe = $scope.allRecipes.filter($scope.pagefilter)[0];
+	}).catch(function(error) {
+		console.log("Error ", error);
+	});
   $scope.recipereduce = function(acc, curr) {
     var obj = {"category":'', "recipes": ''};
     obj.category = curr;
@@ -31,11 +61,12 @@ function CategoriesCtrl($scope, $location, recipesFactory) {
     return acc;
   };
 
-	recipesFactory.getRecipes().then(function(response) {
-		$scope.recipes = response;
-		$scope.allRecipes = $scope.categories.reduce($scope.recipereduce, []);
-    $scope.thisRecipe = $scope.allRecipes.filter($scope.pagefilter)[0];
-	}, function errorResponse(response){
-		console.log(response.statusText);
-	});
+
+	//recipesFactory.getRecipes().then(function(response) {
+	//	$scope.recipes = response;
+	//	$scope.allRecipes = $scope.categories.reduce($scope.recipereduce, []);
+ //   $scope.thisRecipe = $scope.allRecipes.filter($scope.pagefilter)[0];
+	//}, function errorResponse(response){
+	//	console.log(response.statusText);
+	//});
 }

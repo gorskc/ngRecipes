@@ -32,8 +32,8 @@ li > a.main-nav-link:hover  {
   background-color: #DCDCDC;
   color: #6A5ACD;
 }
-ul.dropdown-menu {
-  width: 150px;
+ul.dropdown-menu > li {
+  width: 250px;
 }
 
 /*---- sidebar ----*/

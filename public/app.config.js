@@ -143,7 +143,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -252,11 +257,20 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         'list': {
           templateUrl: 'list/list.html',
           controller: 'ListCtrl',
-          controllerAs: 'list'
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginCtrl',
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -332,12 +346,20 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('login.password-reset', {
       url: '/password-reset',
-      onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+      onEnter: ['$stateParams', '$state', '$uibModal', 'Auth', function($stateParams, $state, $uibModal, Auth) {
         $uibModal.open({
-          templateUrl: "password-reset.html",
-          controller: ['$scope', function($scope) {
+          templateUrl: "login/password-reset.html",
+          controller: ['$scope', 'Auth', function($scope, Auth) {
             $scope.dismiss = function() {
               $scope.$dismiss();
+            };
+            $scope.resetPassword = function() {
+              Auth.$sendPasswordResetEmail($scope.resetemail).then(function() {
+                console.log("Password reset email sent successfully.");
+                $scope.$close(true);
+              }).catch(function(error) {
+                console.log("Error: ", error);
+              });
             };
             $scope.save = function() {
               $scope.$close(true);

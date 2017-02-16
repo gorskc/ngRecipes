@@ -4,29 +4,18 @@ angular
 
 LoginCtrl.$inject = ['$scope', '$state', 'currentAuth', 'Auth'];
 function LoginCtrl($scope, $state, currentAuth, Auth) {
+  $scope.loginemail;
+  $scope.loginpassword;
   Auth.$onAuthStateChanged(function(firebaseUser) {
     if (firebaseUser) {
       console.log(firebaseUser);
-      var email = firebaseUser.email;
-      var emailVerified = firebaseUser.emailVerified;
-      document.getElementById('display-userName').textContent = firebaseUser.email;
+      $scope.displayemail = firebaseUser.email;
+      document.getElementById('display-userName').textContent = $scope.displayemail;
     }
   })
   $scope.signIn = function() {
-    //console.log(currentAuth);
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    if ($scope.email.length < 4) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    if ($scope.password.length < 4) {
-      alert('Please enter a password.');
-      return;
-    }
-
-    Auth.$signInWithEmailAndPassword($scope.email, $scope.password).then(function(response) {
-      console.log(response.displayName);
+    console.log($scope.loginemail);
+    Auth.$signInWithEmailAndPassword($scope.loginemail, $scope.loginpassword).then(function(response) {
       $state.go('recipes');
     }).catch(function(error) {
       var errorCode = error.code;
@@ -49,5 +38,6 @@ function LoginCtrl($scope, $state, currentAuth, Auth) {
       console.log("Error signing user out:", error);
     });
   };
+
 
 }

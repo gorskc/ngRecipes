@@ -26,9 +26,8 @@ function AccountCtrl($scope, $state, currentAuth, Auth) {
     });
     $state.go('account');
   };
-  $scope.resetEmail = function() {
-    Auth.$sendPasswordResetEmail()
-  };
+
+  $scope.showDelete = false;
   $scope.deleteUser = function() {
     Auth.$deleteUser().then(function() {
       console.log("User removed successfully!");

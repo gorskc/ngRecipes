@@ -10,7 +10,7 @@
       <p>Source: <a class="details-link" href="{{ recipe.source }}">{{ source }}</a></p>
     </div>
     <div class="col-lg-8">
-      <form ng-submit="selectedIngredients()">
+      <form>
         <table class="table table-condensed ingredients">
           <thead>
             <tr>
@@ -19,11 +19,11 @@
           </thead>
           <tbody>
             <tr ng-repeat="ingredient in ingredients track by $index">
-              <td><label><input type="checkbox" ng-model="ingredient.selected"> {{ ingredient }}</label></td>
+              <td><label><input type="checkbox" ng-model="ingredient.selected"> {{ ingredient.item }}</label></td>
             </tr>
           </tbody>
         </table>
-        <a ui-sref="list"><button type="submit" id="groceryLink" ng-click="selectedIngredients()" class="btn">Add to grocery list</button></a>
+        <a ui-sref="list"><button type="submit" id="groceryLink" ng-click="saveItems()" class="btn">Add to grocery list</button></a>
       </form>
     </div>
   </div>
