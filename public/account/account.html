@@ -3,14 +3,23 @@
   <table class="table account-table">
     <tbody>
       <tr>
-        <td colspan="3">Name</td>
-        <td id="accountName"></td>
+        <td colspan="3">Email</td>
+        <td id="accountEmail">{{ email }}</td>
       </tr>
       <tr>
-        <td colspan="3">Email</td>
-        <td id="accountEmail"></td>
+        <td colspan="3">Password</td>
+        <td id="accountPassword">{{ password }}</td>
       </tr>
     </tbody>
   </table>
-  <button class="btn account-btn">Edit Account Information</button>
+  <div class="update account-buttons">
+    <button class="btn account-btn" ui-sref="account-update">Edit Account Information</button>
+  </div>
+  <div class="delete account-buttons">
+    <button class="btn account-btn delete" ng-click="showDelete = !showDelete">Delete Account</button>
+    <div class="delete" id="deleteConfirm" ng-show="showDelete">
+      <p>Are you sure you want to delete your account?</p>
+      <button class="btn btn-sm account-btn" ng-click="deleteUser()">Yes, delete</button>
+    </div>
+  </div>
 </div>
