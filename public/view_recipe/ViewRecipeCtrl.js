@@ -8,6 +8,7 @@ function ViewRecipeCtrl($scope, $stateParams, $location, $firebaseObject) {
 		$scope.ingredients;
 		$scope.instructions;
 		$scope.source;
+		$scope.selection = [];
 
 		$scope.path = $location.url();
 		var path_arr = $scope.path.split('/');
@@ -29,31 +30,31 @@ function ViewRecipeCtrl($scope, $stateParams, $location, $firebaseObject) {
 				console.log("Error: ", error);
 			});
 
-		//console.log($scope.recipe);
+		$scope.redItems = function(acc, curr){
+			var obj = {"item": '', "selected": ''};
+			obj.item = curr;
+			obj.selected = false;
+			acc.push(obj);
+			return acc;
+		};
+
+		$scope.selectedIngredients = function(){
+			$scope.ingredients.forEach(function(ingredient) {
+				if(ingredient.selected) {
+					$scope.selection.push(ingredient.item);
+				}
+			});
+
+		$scope.saveItems = function() {
+			list.$add($scope.selection).then(function(ref) {
+				var id = ref.key;
+				console.log("added record with id " + id);
+				list.$indexFor(id);
+				$state.go('list');
+			});
+		}
 
 
 
-		//$scope.recipe;
-
-		//$scope.instructions;
-		//$scope.source;
-		//$scope.redItems = function(acc, curr){
-		//	var obj = {"item": '', "selected": ''};
-		//	obj.item = curr;
-		//	obj.selected = false;
-		//	acc.push(obj);
-		//	return acc;
-		//};
-//
-		//$scope.selectedIngredients = function(){
-		//	var selection = [];
-		//	angular.forEach($scope.ingredients, function(ingredient) {
-		//		if(ingredient.selected) {
-		//			sharedListService.addList(ingredient.item);
-		//		}
-		//	});
-		//};
-//
-//
 
 }

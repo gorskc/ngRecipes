@@ -2,8 +2,8 @@ angular
   .module('recipebox')
   .controller('ListCtrl', ListCtrl);
 
-ListCtrl.$inject = ['$scope', 'sharedListService'];
+ListCtrl.$inject = ['$scope'];
 
-function ListCtrl($scope, sharedListService) {
-  $scope.data = sharedListService.getList();
+function ListCtrl($scope) {
+  
 }
