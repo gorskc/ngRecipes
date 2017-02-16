@@ -25,12 +25,20 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
             }]
           }
         },
         'main': {
+<<<<<<< HEAD
+          templateUrl: 'main/main.html'
+=======
           templateUrl: 'main/main.html',
           controller: 'LoginCtrl',
           resolve: {
@@ -38,6 +46,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
               return Auth.$requireSignIn();
             }]
           }
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -54,8 +63,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'login/login.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
             }]
           }
         },
@@ -63,8 +77,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
             }]
           }
         },
@@ -81,14 +100,28 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'register': {
           templateUrl: 'registration/register.html',
+<<<<<<< HEAD
+          controller: 'RegistrationCtrl',
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
+=======
           controller: 'RegistrationCtrl'
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
             }]
           }
         },
@@ -110,8 +143,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
             }]
           }
         },
@@ -119,7 +157,11 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'recipes/all-recipes.html',
           controller: 'RecipesCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+=======
             "currentAuth": ['Auth', function(Auth) {
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
               return Auth.$waitForSignIn();
             }]
           }
@@ -140,18 +182,26 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'categories': {
           templateUrl: 'categories/categories.html',
+<<<<<<< HEAD
+          controller: 'CategoriesCtrl'
+=======
           controller: 'CategoriesCtrl',
           resolve: {
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
             }]
           }
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+=======
             "currentAuth": ['Auth', function(Auth) {
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
               return Auth.$requireSignIn();
             }]
           }
@@ -165,13 +215,28 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('recipes.detail', {
+<<<<<<< HEAD
+      url: '/{id}',
+=======
       url: '/{id:[0-9]{1,8}}',
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
       views: {
         'user-nav': {
           templateUrl: 'nav/user-nav.html'
         },
         'sidebar': {
           templateUrl: 'nav/sidebar.html',
+<<<<<<< HEAD
+          controller: 'SidebarCtrl'
+        },
+        'detail': {
+          templateUrl: 'view_recipe/recipe-detail.html',
+          controller: 'ViewRecipeCtrl'
+        },
+        'main-nav': {
+          templateUrl: 'nav/main-nav.html',
+          controller: 'LoginCtrl'
+=======
           controller: 'SidebarCtrl',
           controllerAs: 'recipes'
         },
@@ -188,6 +253,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
               return Auth.$requireSignIn();
             }]
           }
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -205,13 +271,26 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'new': {
           templateUrl: 'new_recipe/new.html',
+<<<<<<< HEAD
+          controller: 'NewRecipeCtrl',
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
+=======
           controller: 'NewRecipeCtrl'
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+=======
             "currentAuth": ['Auth', function(Auth) {
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
               return Auth.$requireSignIn();
             }]
           }
@@ -232,13 +311,26 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'show-new': {
           templateUrl: 'show_new/show-new.html',
+<<<<<<< HEAD
+          controller: 'NewRecipeCtrl',
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
+=======
           controller: 'ShowNewCtrl'
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+=======
             "currentAuth": ['Auth', function(Auth) {
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
               return Auth.$requireSignIn();
             }]
           }
@@ -260,14 +352,27 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         'list': {
           templateUrl: 'list/list.html',
           controller: 'ListCtrl',
+<<<<<<< HEAD
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
+=======
           controllerAs: 'list'
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
             }]
           }
         },
@@ -286,7 +391,11 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'account/account.html',
           controller: 'AccountCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+=======
             "currentAuth": ['Auth', function(Auth) {
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
               return Auth.$requireSignIn();
             }]
           }
@@ -295,8 +404,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'nav/main-nav.html',
           controller: 'LoginCtrl',
           resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
             }]
           }
         },
@@ -311,13 +425,82 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
+<<<<<<< HEAD
+    .state('account-update', {
+      url: '/account-update',
+      views: {
+        'account-update': {
+          templateUrl: 'account/account-update.html',
+          controller: 'AccountCtrl',
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
+        },
+=======
+    .state('logout', {
+      url: '/logout',
+      views: {
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
+        'main-nav': {
+          templateUrl: 'nav/main-nav.html',
+          controller: 'LoginCtrl',
+          resolve: {
+<<<<<<< HEAD
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$waitForSignIn();
+            }]
+          }
+        },
+        'user-nav': {
+          templateUrl: 'nav/user-nav.html'
+        },
+        'footer': {
+          templateUrl: 'footer/footer.html'
+        },
+        data: {
+          css: ['assets/css/pages.css', 'assets/css/nav-footer.css']
+        }
+      }
+    })
+    .state('login.password-reset', {
+      url: '/password-reset',
+      onEnter: ['$stateParams', '$state', '$uibModal', 'Auth', function($stateParams, $state, $uibModal, Auth) {
+        $uibModal.open({
+          templateUrl: "login/password-reset.html",
+          controller: ['$scope', 'Auth', function($scope, Auth) {
+            $scope.dismiss = function() {
+              $scope.$dismiss();
+            };
+            $scope.resetPassword = function() {
+              Auth.$sendPasswordResetEmail($scope.resetemail).then(function() {
+                console.log("Password reset email sent successfully.");
+                $scope.$close(true);
+              }).catch(function(error) {
+                console.log("Error: ", error);
+              });
+            };
+            $scope.save = function() {
+              $scope.$close(true);
+            };
+          }]
+        }).result.finally(function() {
+          $state.go('^');
+        });
+      }]
+    })
     .state('logout', {
       url: '/logout',
       views: {
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
+          controller: 'LoginCtrl'
+        },
+        'logout': {
+          templateUrl: 'logout/logout.html',
+          controller: 'LoginCtrl'
+=======
             "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
             }]
@@ -331,6 +514,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
               return Auth.$requireSignIn();
             }]
           }
+>>>>>>> 05364b7359973ca0fabdb180e56054995efea601
         },
         'footer': {
           templateUrl: 'footer/footer.html'
