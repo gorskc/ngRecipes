@@ -1,0 +1,99 @@
+
+/*---- User nav ----*/
+nav.user {
+  height: 30px;
+  width: 100% !important;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  background-color: #6A5ACD;
+  position: relative;
+  z-index: 20;
+}
+
+ul.user-nav a:hover,
+ul.user-nav a:focus {
+  color: #D5D5D5 !important;
+  background-color: #483D8B !important;
+}
+
+/*---- main-nav ----*/
+.fa-cutlery,
+.fa-user-circle-o,
+.main-nav-link,
+.caret {
+  color: #6A5ACD;
+}
+
+nav.main {
+  margin-bottom: 0;
+}
+
+li > a.main-nav-link:hover  {
+  background-color: #DCDCDC;
+  color: #6A5ACD;
+}
+ul.dropdown-menu {
+  width: 150px;
+}
+
+/*---- sidebar ----*/
+ul.nav > li > a.active {
+  background-color: #6A5ACD;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  color: #D5D5D5;
+  text-decoration: none;
+}
+
+div.sidebar {
+  position: fixed;
+  top: 120px;
+  width: 185px;
+  background-color: #A9A9A9;
+  color: #FFFFFF;
+}
+
+div.sidebar > h3 {
+  text-indent: 10%;
+  border-bottom: 1px solid #D5D5D5;
+}
+
+div.sidebar > ul > li:active,
+div.sidebar > ul > li:hover,
+div.sidebar > ul > li:focus,
+div.sidebar > ul > li.active,
+div.sidebar > ul > li > a:active,
+div.sidebar > ul > li > a:hover,
+div.sidebar > ul > li > a:focus {
+  background-color: #6A5ACD;
+  border-radius: 0;
+  color: #D5D5D5;
+  text-decoration: none;
+}
+
+.sidebar-link {
+  color: #FFFFFF;
+}
+/*---- footer ----*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+margin-bottom: 70px;
+}
+
+.modal-footer {
+  padding-top: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  color: #6A5ACD;
+  background-color: #F5F5F5;
+}
+.modal-footer > p > a {
+  color: #6A5ACD;
+}

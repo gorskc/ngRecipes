@@ -1,0 +1,17 @@
+<div class="account-info">
+  <h1 class="account-title">Account Information</h1>
+  <table class="table account-table">
+    <tbody>
+      <tr>
+        <td colspan="3">Email</td>
+        <td id="accountEmail">{{ email }}</td>
+      </tr>
+      <tr>
+        <td colspan="3">Password</td>
+        <td id="accountPassword">{{ password }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn account-btn" ui-sref="account-update">Edit Account Information</button>
+  <button class="btn account-btn" ng-click="deleteUser()">Delete Account</button>
+</div>

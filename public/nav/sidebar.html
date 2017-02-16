@@ -1,0 +1,8 @@
+<div class="sidebar">
+  <h3>Recipes</h3>
+  <ul class="nav nav-pills nav-stacked sidebar-stack" ng-repeat="recipe in recipes">
+    <li><a class="sidebar-link"
+      ui-sref="recipes.detail({ id: recipe.$id })"
+      ng-class="{ 'active' : getActive(recipe)}">{{ recipe.recipename }}</a></li>
+  </ul>
+</div>

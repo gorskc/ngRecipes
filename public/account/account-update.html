@@ -1,0 +1,29 @@
+<div class="account-update-container">
+  <div class="account-update-title">
+    <h1 class="update-title">Update Your Information</h1>
+  </div>
+  <form class="update form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="email" name="email" placeholder="{{email}}" ng-model="newEmail">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="password">Password</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+      </div>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" name="confirm" placeholder="Confirm password" ng-model="newPassword">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn" type="submit" ng-click="updateAccount()">
+          <a>Update</a>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,37 @@
+<div class="container recipe-container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="title">{{ recipe.recipename }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 thumbnail" >
+      <img class="recipe-thumbnail" ng-src="{{ recipe.image_url }}">
+      <p>Source: <a class="details-link" href="{{ recipe.source }}">{{ source }}</a></p>
+    </div>
+    <div class="col-lg-8">
+      <form ng-submit="selectedIngredients()">
+        <table class="table table-condensed ingredients">
+          <thead>
+            <tr>
+              <th>Ingredients</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="ingredient in ingredients track by $index">
+              <td><label><input type="checkbox" ng-model="ingredient.selected"> {{ ingredient }}</label></td>
+            </tr>
+          </tbody>
+        </table>
+        <a ui-sref="list"><button type="submit" id="groceryLink" ng-click="selectedIngredients()" class="btn">Add to grocery list</button></a>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <ol><h4>Instructions</h4>
+        <li ng-repeat="instruction in instructions track by $index">{{ instruction }}</li>
+      </ol>
+    </div>
+  </div>
+</div>
