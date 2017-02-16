@@ -2,9 +2,9 @@ angular
   .module('recipebox')
   .controller('ShowNewCtrl', ShowNewCtrl);
 
-ShowNewCtrl.$inject = ['$scope', 'sharedRecipeService'];
+ShowNewCtrl.$inject = ['$scope', '$firebaseObject'];
 
-function ShowNewCtrl($scope, sharedRecipeService) {
+function ShowNewCtrl($scope, $firebaseObject) {
   $scope.data = sharedRecipeService.getData();
   $scope.ingredients = $scope.data.ingredients.split(',');
   $scope.instructions = $scope.data.instructions.split(';');
