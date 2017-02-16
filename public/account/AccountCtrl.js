@@ -2,31 +2,37 @@ angular
   .module('recipebox')
   .controller('AccountCtrl', AccountCtrl);
 
-AccountCtrl.$inject = ['$rootScope', '$scope', '$state'];
+AccountCtrl.$inject = ['$scope', '$state', 'currentAuth', 'Auth'];
 
-function AccountCtrl($scope, $state) {
-
-  firebase.auth().onAuthStateChanged(function(user) {
+function AccountCtrl($scope, $state, currentAuth, Auth) {
+  Auth.$onAuthStateChanged(function(user) {
     if (user) {
-      document.getElementById('accountName').textContent = user.displayName;
-      document.getElementById('accountEmail').textContent = user.email;
-    } else {
-      console.log("logged out");
+      console.log(user);
+      $scope.password = user.password;
+      $scope.email = user.email;
     }
-  });
+  })
+
   $scope.updateAccount = function() {
-    var user = firebase.auth().currentUser;
-    var newName = document.getElementById("newName").value;
-    var newEmail = document.getElementById("newEmail").value;
-    var newPassword = document.getElementById("newPassword").value;
-    user.updateProfile({
-      displayName: newName,
-      email: newEmail,
-      password: newPassword
-    }).then(function() {
-      console.log('updated');
-    }, function(error) {
-      console.log(error);
+    Auth.$updatePassword($scope.newPassword).then(function() {
+      console.log("Password changed successfully!");
+    }).catch(function(error) {
+      console.log("Error: ", error);
+    });
+    Auth.$updateEmail($scope.newEmail).then(function() {
+      console.log("Email changed successfully!");
+    }).catch(function(error) {
+      console.log("Error: ", error);
+    });
+    $state.go('account');
+  };
+
+  $scope.showDelete = false;
+  $scope.deleteUser = function() {
+    Auth.$deleteUser().then(function() {
+      console.log("User removed successfully!");
+    }).catch(function(error) {
+      console.log("Error: ", error);
     });
   }
 }
