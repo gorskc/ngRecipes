@@ -7,10 +7,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="list-item-row" ng-repeat="item in data">
-          <td><label><input type="checkbox"> {{ item }}</label></td>
+        <tr class="list-item-row" ng-repeat="element in list">
+          <td><label><input type="checkbox" ng-model="element.selected"> {{ element.item }}</label></td>
         </tr>
       </tbody>
     </table>
   </form>
+  <button class="btn" ng-click="removeItems()"><a>Removed checked items</a></button>
 </div>
