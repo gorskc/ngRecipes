@@ -2,9 +2,9 @@ angular
 	.module('recipebox')
 	.controller('SidebarCtrl', SidebarCtrl);
 
-SidebarCtrl.$inject = ['$scope', '$location', 'recipesFactory'];
+SidebarCtrl.$inject = ['$scope', '$location', '$firebaseArray'];
 
-function SidebarCtrl($scope, $location, recipesFactory) {
+function SidebarCtrl($scope, $location, $firebaseArray) {
 
   $scope.path = $location.path();
 	$scope.recipes;
@@ -12,11 +12,9 @@ function SidebarCtrl($scope, $location, recipesFactory) {
     var path_arr = $scope.path.split('/');
     var index = path_arr.length - 1;
     var page_id = path_arr[index];
-    return Number(value.id) === Number(page_id);
+    return value.$id == page_id;
   };
-	recipesFactory.getRecipes().then(function(response) {
-		$scope.recipes = response;
-	}, function errorResponse(response){
-		console.log(response.statusText);
-	});
+
+	var ref = firebase.database().ref('recipes/');
+	$scope.recipes = $firebaseArray(ref);
 }
