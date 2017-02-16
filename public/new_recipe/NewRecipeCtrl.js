@@ -2,9 +2,43 @@ angular
   .module('recipebox')
   .controller('NewRecipeCtrl', NewRecipeCtrl);
 
-NewRecipeCtrl.$inject = ['$scope', 'sharedRecipeService'];
+NewRecipeCtrl.$inject = ['$scope', '$state', '$firebaseArray'];
 
-function NewRecipeCtrl($scope, sharedRecipeService) {
+function NewRecipeCtrl($scope, $state, $firebaseArray) {
+
+  $scope.name;
+  $scope.ingredients;
+  $scope.instructions;
+  $scope.source;
+  $scope.image_url;
+  $scope.type = [];
+
+
+  $scope.saveRecipe = function() {
+    var ref = firebase.database().ref('recipes/');
+    var list = $firebaseArray(ref);
+    if(!$scope.type) {
+      $scope.choices.forEach($scope.getSelected);
+    } else {
+      $scope.type = [];
+      $scope.choices.forEach($scope.getSelected);
+    }
+
+    list.$add({
+      recipename: $scope.name,
+      image_url: $scope.image_url,
+      source: $scope.source,
+      type: $scope.type,
+      ingredients: $scope.ingredients,
+      instructions: $scope.instructions
+    }).then(function(ref) {
+      var id = ref.key;
+      console.log("added record with id " + id);
+      list.$indexFor(id);
+      $state.go('recipes');
+    });
+
+  };
   $scope.choices = [{
                      "type":"Breakfast",
                      "selected":false
@@ -21,27 +55,11 @@ function NewRecipeCtrl($scope, sharedRecipeService) {
                       "type":"Dessert",
                       "selected":false
                     }];
-  $scope.name;
-  $scope.ingredients;
-  $scope.instructions;
-  $scope.source;
-  $scope.image_url;
-  $scope.type;
-  $scope.data = {};
   $scope.getSelected = function(value) {
-    $scope.data['type'] = [];
-    if(value.selected) {
-      $scope.data['type'].push(value.type);
+    if(value.checked) {
+      $scope.type.push(value.type);
     }
   };
-  $scope.getRecipeData = function() {
-    $scope.data['name'] = $scope.name;
-    $scope.data['ingredients'] = $scope.ingredients;
-    $scope.data['instructions'] = $scope.instructions;
-    $scope.data['source'] = $scope.source;
-    $scope.data['image_url'] = $scope.image_url;
-    $scope.choices.forEach($scope.getSelected);
-    sharedRecipeService.addData($scope.data);
-  }
+
 
 }
