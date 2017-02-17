@@ -9,7 +9,7 @@ function ViewRecipeCtrl($scope, $state, $location, $firebaseObject, $firebaseArr
 	$scope.instructions;
 	$scope.source;
 	$scope.selection = [];
-
+	$scope.recipe;
 	$scope.path = $location.url();
 	var path_arr = $scope.path.split('/');
 	var index = path_arr.length - 1;
@@ -17,19 +17,21 @@ function ViewRecipeCtrl($scope, $state, $location, $firebaseObject, $firebaseArr
 	console.log(page_id);
 
 	var ref = firebase.database().ref('recipes/' + page_id);
-	$scope.recipe = $firebaseObject(ref);
-	$scope.recipe.$loaded()
+	var recipe = $firebaseObject(ref);
+	recipe.$loaded()
 		.then(function(data) {
-			console.log(data === $scope.recipe);
-			var recipes = $scope.recipe.ingredients.split(/\n/g);
-			$scope.ingredients = recipes.reduce($scope.redItems, []);
-			$scope.instructions = $scope.recipe.instructions.split(/\n/g);
-			var srcArray = $scope.recipe.source.split("/");
+			$scope.recipe = data;
+			console.log($scope.recipe);
+			var ingredients = data.ingredients.split(/\n/g);
+			$scope.ingredients = ingredients.reduce($scope.redItems, []);
+			$scope.instructions = data.instructions.split(/\n/g);
+			var srcArray = data.source.split("/");
 			$scope.source = srcArray[2];
 		})
 		.catch(function(error) {
 			console.log("Error: ", error);
 		});
+
 
 	$scope.redItems = function(acc, curr){
 		var obj = {"item": '', "selected": ''};

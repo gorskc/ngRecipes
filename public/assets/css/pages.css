@@ -148,6 +148,28 @@ a.thumbnail {
 body {
   background-color: #F5F5F5;
 }
+
+/*----- Edit Recipe Form -----*/
+.edit-container {
+  background-color: #FFFFFF;
+  width: 75%;
+  border: 1px solid #FFFFFF;
+  position: relative;
+  top: 0;
+  left: 250px;
+  margin-bottom: 100px;
+}
+.edit-title {
+  position: relative;
+  left: 6%;
+}
+.form-edit {
+  position: relative;
+  left: 5%;
+  width: 80%;
+  padding: 3%;
+}
+
 /*----- list display ----*/
 table.list-table {
   background-color: #FFFFFF;
@@ -271,6 +293,10 @@ div.recipe-container {
   width: 80%;
   margin: 10px 0 0 200px;
   box-shadow: 2px 2px 4px #D3D3D3;
+}
+
+.fa-pencil {
+  font-size: 20px;
 }
 table.ingredients > label {
   text-align: left;

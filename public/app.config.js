@@ -160,6 +160,33 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
+    .state('recipes.detail.edit', {
+      url: '/edit',
+      views: {
+        'user-nav': {
+          templateUrl: 'nav/user-nav.html'
+        },
+        'edit': {
+          templateUrl: 'view_recipe/edit-recipe.html',
+          controller: 'EditRecipeCtrl',
+          resolve: {
+            "currentAuth": ["Auth", function(Auth) {
+              return Auth.$requireSignIn();
+            }]
+          }
+        },
+        'main-nav': {
+          templateUrl: 'nav/main-nav.html',
+          controller: 'LoginCtrl'
+        },
+        'footer': {
+          templateUrl: 'footer/footer.html'
+        },
+        data: {
+          css: ['assets/css/pages.css', 'assets/css/nav-footer.css']
+        }
+      }
+    })
     .state('new', {
       url: '/new',
       views: {

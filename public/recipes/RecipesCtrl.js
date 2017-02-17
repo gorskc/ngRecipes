@@ -31,25 +31,8 @@ function RecipesCtrl($scope, $location, $state, $firebaseArray) {
 		acc.push(obj);
 		return acc;
 	};
-	//$scope.allRecipes = $scope.categories.reduce(function(acc, value) {
-	//	var obj = {"category":'', "recipes": ''};
-	//	obj.category = value;
-	//	$scope.recipes.$loaded()
-	//		.then(function(data) {
-	//			console.log(data === $scope.recipes);
-	//			obj.recipes = $scope.recipes.filter(function(item) {
-	//				if(item.type.indexOf(value) > -1) {
-	//					return item;
-	//				} else if (value === "All") {
-	//					return item;
-	//				};
-	//			});
-	//		})
-	//		.catch(function(error) {
-	//			console.log("Error: ", error);
-	//		});
-//
-	//	acc.push(obj);
-	//	return acc;
-	//}, []);
+/////////// Add edit function to change recipe categories
+/// Limit number of recipes in All
+/// Limit number of recipes in sidebar or change to categories
+//// Capitalize titles
 }
