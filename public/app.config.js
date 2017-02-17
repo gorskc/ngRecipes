@@ -23,15 +23,11 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'main': {
-          templateUrl: 'main/main.html'
+          templateUrl: 'main/main.html',
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -46,21 +42,11 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'login': {
           templateUrl: 'login/login.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -78,18 +64,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'RegistrationCtrl',
           resolve: {
             "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
+              return Auth.$requireSignIn();
             }]
           }
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -107,19 +88,14 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'recipes': {
           templateUrl: 'recipes/all-recipes.html',
           controller: 'RecipesCtrl',
           resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
+            "currentAuth": ['Auth', function(Auth) {
+              return Auth.$requireSignIn();
             }]
           }
         },
@@ -139,16 +115,16 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'categories': {
           templateUrl: 'categories/categories.html',
-          controller: 'CategoriesCtrl'
-        },
-        'main-nav': {
-          templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
+          controller: 'CategoriesCtrl',
           resolve: {
-            "currentAuth": ["Auth", function(Auth) {
+            "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
             }]
           }
+        },
+        'main-nav': {
+          templateUrl: 'nav/main-nav.html',
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -201,12 +177,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$requireSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -233,12 +204,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$requireSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -265,12 +231,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -287,19 +248,14 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: 'account/account.html',
           controller: 'AccountCtrl',
           resolve: {
-            "currentAuth": ["Auth", function(Auth) {
+            "currentAuth": ['Auth', function(Auth) {
               return Auth.$requireSignIn();
             }]
           }
         },
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'user-nav': {
           templateUrl: 'nav/user-nav.html'
@@ -315,6 +271,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('account-update', {
       url: '/account-update',
       views: {
+        'main-nav': {
+          templateUrl: 'nav/main-nav.html',
+          controller: 'LoginCtrl'
+        },
+        'user-nav': {
+          templateUrl: 'nav/user-nav.html'
+        },
         'account-update': {
           templateUrl: 'account/account-update.html',
           controller: 'AccountCtrl',
@@ -324,17 +287,27 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
             }]
           }
         },
+        'footer': {
+          templateUrl: 'footer/footer.html'
+        },
+        data: {
+          css: ['assets/css/pages.css', 'assets/css/nav-footer.css']
+        }
+      }
+    })
+    .state('logout', {
+      url: '/logout',
+      views: {
         'main-nav': {
           templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl',
-          resolve: {
-            "currentAuth": ["Auth", function(Auth) {
-              return Auth.$waitForSignIn();
-            }]
-          }
+          controller: 'LoginCtrl'
         },
         'user-nav': {
           templateUrl: 'nav/user-nav.html'
+        },
+        'logout': {
+          templateUrl: 'logout/logout.html',
+          controller: 'LoginCtrl'
         },
         'footer': {
           templateUrl: 'footer/footer.html'
@@ -369,25 +342,6 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           $state.go('^');
         });
       }]
-    })
-    .state('logout', {
-      url: '/logout',
-      views: {
-        'main-nav': {
-          templateUrl: 'nav/main-nav.html',
-          controller: 'LoginCtrl'
-        },
-        'logout': {
-          templateUrl: 'logout/logout.html',
-          controller: 'LoginCtrl'
-        },
-        'footer': {
-          templateUrl: 'footer/footer.html'
-        },
-        data: {
-          css: ['assets/css/pages.css', 'assets/css/nav-footer.css']
-        }
-      }
     })
     .state('sitemap', {
       url: '/sitemap',

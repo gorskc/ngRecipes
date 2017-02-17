@@ -2,8 +2,8 @@ angular
   .module('recipebox')
   .controller('LoginCtrl', LoginCtrl);
 
-LoginCtrl.$inject = ['$scope', '$state', 'currentAuth', 'Auth'];
-function LoginCtrl($scope, $state, currentAuth, Auth) {
+LoginCtrl.$inject = ['$scope', '$state', 'Auth'];
+function LoginCtrl($scope, $state, Auth) {
   $scope.loginemail;
   $scope.loginpassword;
   Auth.$onAuthStateChanged(function(firebaseUser) {
