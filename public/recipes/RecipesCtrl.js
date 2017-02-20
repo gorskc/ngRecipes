@@ -2,9 +2,9 @@ angular
 	.module('recipebox')
 	.controller('RecipesCtrl', RecipesCtrl);
 
-RecipesCtrl.$inject = ['$scope', '$location', '$state', '$firebaseArray'];
+RecipesCtrl.$inject = ['$scope', '$location', '$state', '$firebaseArray', '$log'];
 
-function RecipesCtrl($scope, $location, $state, $firebaseArray) {
+function RecipesCtrl($scope, $location, $state, $firebaseArray, $log) {
 
 	$scope.allRecipes;
 	$scope.query = '';
@@ -12,9 +12,11 @@ function RecipesCtrl($scope, $location, $state, $firebaseArray) {
 
 	var ref = firebase.database().ref('recipes/');
 	$scope.recipes = $firebaseArray(ref);
-	console.log($firebaseArray(ref));
 	$scope.recipes.$loaded().then(function(data) {
 		$scope.allRecipes = $scope.categories.reduce($scope.recipereduce, []);
+		$scope.bigTotalItems = data.length;
+		$scope.pageSize = 3;
+		$scope.currentPage = 1;
 	}).catch(function(error) {
 		console.log("Error ", error);
 	});
@@ -31,6 +33,13 @@ function RecipesCtrl($scope, $location, $state, $firebaseArray) {
 		acc.push(obj);
 		return acc;
 	};
+
+  $scope.pageChanged = function() {
+    $log.log('Page changed to: ' + $scope.currentPage);
+  };
+
+
+	$scope.bigCurrentPage = 1;
 /////////// Add edit function to change recipe categories
 /// Limit number of recipes in All
 /// Limit number of recipes in sidebar or change to categories

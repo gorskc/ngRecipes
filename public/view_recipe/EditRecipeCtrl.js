@@ -21,8 +21,8 @@ function EditRecipeCtrl($scope, $state, $location, $firebaseObject, $firebaseArr
 	recipe.$loaded()
 		.then(function(data) {
 			$scope.editRecipe = data;
-			console.log($scope.editRecipe);
       $scope.recipeChoices = $scope.editChoices.reduce($scope.getType, []);
+			console.log($scope.recipeChoices);
 		})
 		.catch(function(error) {
 			console.log("Error: ", error);
@@ -43,12 +43,9 @@ function EditRecipeCtrl($scope, $state, $location, $firebaseObject, $firebaseArr
   $scope.saveRecipe = function() {
     var ref = firebase.database().ref('recipes/' + page_id);
     var recipe = $firebaseObject(ref);
-    if(!$scope.type) {
-      $scope.recipeChoices.forEach($scope.getSelected);
-    } else {
-      $scope.type = [];
-      $scope.recipeChoices.forEach($scope.getSelected);
-    }
+		$scope.type = $scope.recipeChoices.reduce($scope.getSelected, []);
+
+		console.log($scope.type);
     recipe.recipename = $scope.editRecipe.recipename;
     recipe.image_url = $scope.editRecipe.image_url;
     recipe.source = $scope.editRecipe.source;
@@ -64,9 +61,11 @@ function EditRecipeCtrl($scope, $state, $location, $firebaseObject, $firebaseArr
 
   };
 
-  $scope.getSelected = function(value) {
-    if(value.checked) {
-      $scope.type.push(value.type);
+  $scope.getSelected = function(acc, value) {
+    if(value.selected) {
+			console.log(value);
+      acc.push(value.type);
     }
+		return acc;
   };
 }

@@ -20,27 +20,7 @@ function CategoriesCtrl($scope, $location, $state, $firebaseArray, $firebaseObje
 	var ref = firebase.database().ref('recipes/');
 	$scope.recipes = $firebaseArray(ref);
 	console.log($firebaseArray(ref));
-	//$scope.allRecipes = $scope.categories.reduce(function(acc, value) {
-	//	var obj = {"category":'', "recipes": ''};
-	//	obj.category = value;
-	//	$scope.recipes.$loaded()
-	//		.then(function(data) {
-	//			console.log(data === $scope.recipes);
-	//			obj.recipes = $scope.recipes.filter(function(item) {
-	//				if(item.type.indexOf(value) > -1) {
-	//					return item;
-	//				} else if (value === "All") {
-	//					return item;
-	//				};
-	//			});
-	//		})
-	//		.catch(function(error) {
-	//			console.log("Error: ", error);
-	//		});
-//
-	//	acc.push(obj);
-	//	return acc;
-	//}, []);
+
 	$scope.recipes.$loaded().then(function(data) {
 		$scope.allRecipes = $scope.categories.reduce($scope.recipereduce, []);
     $scope.thisRecipe = $scope.allRecipes.filter($scope.pagefilter)[0];
@@ -61,12 +41,4 @@ function CategoriesCtrl($scope, $location, $state, $firebaseArray, $firebaseObje
     return acc;
   };
 
-
-	//recipesFactory.getRecipes().then(function(response) {
-	//	$scope.recipes = response;
-	//	$scope.allRecipes = $scope.categories.reduce($scope.recipereduce, []);
- //   $scope.thisRecipe = $scope.allRecipes.filter($scope.pagefilter)[0];
-	//}, function errorResponse(response){
-	//	console.log(response.statusText);
-	//});
 }
