@@ -64,6 +64,7 @@ function ViewRecipeCtrl($scope, $state, $location, $firebaseObject, $firebaseArr
 			});
 			list.$save().then(function(ref) {
 				ref.key === list.$id;
+				$state.go('list');
 			}, function(error) {
 				console.log("Error: ", error);
 			});

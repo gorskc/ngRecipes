@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-lg-4 thumbnail" >
         <img ng-src="{{ recipe.image_url }}">
-        <p>Source: <a class="details-link" href="{{ recipe.source }}">{{ source }}</a></p>
+        <p>Source: <a class="details-link" target="_blank" href="{{ recipe.source }}">{{ source }}</a></p>
       </div>
       <div class="col-lg-8">
         <form ng-submit="selectedIngredients()">
@@ -25,7 +25,7 @@
               </tr>
             </tbody>
           </table>
-          <a ui-sref="list"><button type="submit" id="groceryLink" ng-click="saveItems()" class="btn">Add to grocery list</button></a>
+          <a><button type="submit" id="groceryLink" ng-click="saveItems()" class="btn">Add to grocery list</button></a>
         </form>
       </div>
     </div>

@@ -7,9 +7,9 @@
         </div>
       </div>
     </div>
+    <h3 class="row-title">All Recipes</h3>
     <div class="row all-recipes">
-      <h3 class="row-title">All Recipes</h3>
-      <div class="recipes col-xs-6 col-md-3" ng-repeat="recipe in recipes | limitTo: pageSize | filter: query ">
+      <div class="recipes col-xs-6 col-md-3" ng-repeat="recipe in recipes | filter: query ">
         <a class="thumbnail all-thumbnails" ui-sref="recipes.detail({ id: recipe.$id })">
           <img ng-src="{{ recipe.image_url }}">
           <div class="caption">
@@ -17,7 +17,6 @@
           </div>
         </a>
       </div>
-      <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></pagination>
     </div>
   </div>
   <div class="categories-container">

@@ -92,10 +92,12 @@ input.recipes-search-bar {
   left: 7%;
 }
 .recipes {
-  margin-left: 50px;
+  margin: 0;
+  height: 275px;
 }
 a.thumbnail {
   border: none;
+  margin: 0;
 }
 div.recipes-container, div.categories-container {
   margin: 15px 15px 15px 15px;
